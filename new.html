@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ética en el Uso de la Tecnología</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      margin: 0;
+      background-color: #eef8f0;
+      color: #121212;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    header, footer {
+      background-color: #031836;
+      color: #ffffff;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(4, 38, 19, 0.5);
+    }
+    nav {
+      display: flex;
+      background-color: #4c7daf;
+      justify-content: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 1rem;
+      display: block;
+      transition: background 0.3s;
+      border-radius: 5px;
+    }
+    nav a:hover {
+      background-color: #082645;
+    }
+    main {
+      padding: 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section {
+      background-color: #ffffff;
+      margin: 1rem 0;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    button {
+      background-color: #4c7daf;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background-color: #1c4065;
+      transform: scale(1.05);
+    }
+    .hidden { display: none; }
+    .tip-box {
+      margin-top: 1rem;
+      background-color: #e8f5e9;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4caf50;
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1000;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Modo oscuro general */
+    .dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    /* Encabezado, pie de página y navegación en modo oscuro */
+    .dark-mode header,
+    .dark-mode footer,
+    .dark-mode nav {
+      background-color: #1f1f1f;
+      color: #f0f0f0;
+    }
+    /* Secciones en modo oscuro */
+    .dark-mode section {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+    }
+    /* Caja de consejos en modo oscuro */
+    .dark-mode .tip-box {
+      background-color: #2e7d32;
+      color: #ffffff;
+    }
+    /* Botones en modo oscuro */
+    .dark-mode button {
+      background-color: #2a5179;
+      color: #ffffff;
+    }
+    .dark-mode button:hover {
+      background-color: #3b6e9a;
+    }
+    /* Listas de decisiones en modo oscuro */
+    .dark-mode .decision-list {
+      background-color: #2a2a2a;
+      border-color: #6ca6e3;
+      color: #f0f0f0;
+    }
+    /* Áreas de texto */
+    .dark-mode textarea {
+      background-color: #2e2e2e;
+      color: #ffffff;
+      border: 1px solid #555;
+    }
+    .decision-list {
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid #4c7daf;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .correct { color: #4c7daf; }
+    .incorrect { color: #f44336; }
+    .reflection {
+      margin-top: 1rem;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    textarea {
+      width: 100%;
+      max-width: 100%;
+      height: 100px;
+      border-radius: 5px;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      resize: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ética en el Uso de la Tecnología</h1>
+    <button onclick="toggleDarkMode()">Modo Oscuro</button>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showSection('inicio')">Inicio</a>
+    <a href="#" onclick="showSection('tips')">Tips Éticos</a>
+    <a href="#" onclick="showSection('minijuegos')">Minijuegos</a>
+    <a href="#" onclick="showSection('nosotros')">Sobre Nosotros</a>
+    <a href="#" onclick="showSection('encuesta')">Encuesta de Satisfacción</a>
+  </nav>
+
+  <main>
+    <section id="inicio">
+      <h2>¿Qué es la ética digital?</h2>
+      <p>La ética digital es el conjunto de principios, normas y valores que orientan nuestro comportamiento cuando utilizamos tecnologías digitales. Va más allá del simple cumplimiento de reglas: implica actuar con responsabilidad, respeto y conciencia en los espacios virtuales.</p>
+      <p>En la era actual, donde la tecnología está presente en casi todos los aspectos de la vida cotidiana, la ética digital se vuelve fundamental para garantizar una convivencia sana, segura y justa en entornos digitales.</p>
+      <h3>Principios clave de la ética digital:</h3>
+      <ul>
+        <li>✔️ Respeto a la privacidad y a los datos personales de otras personas.</li>
+        <li>✔️ Veracidad en la información que se comparte en redes sociales y otros medios.</li>
+        <li>✔️ Uso adecuado del contenido digital, evitando el plagio y la piratería.</li>
+        <li>✔️ Promoción de la ciberseguridad y prevención del acoso o violencia digital.</li>
+        <li>✔️ Actuar con responsabilidad al comentar, publicar o interactuar en línea.</li>
+      </ul>
+      <div>
+        <img src="imagene.jpeg" alt="Conciencia ética en el uso de la tecnología.">
+        <img src="imagenst.jpeg" alt="Importancia de la ciberseguridad en entornos digitales.">
+      </div>
+    </section>
+
+    <section id="tips" class="hidden">
+      <h2>Tips Éticos</h2>
+      <button onclick="showTip()">Mostrar tip aleatorio</button>
+      <div class="tip-box" id="tip-content">Haz clic para recibir un tip</div>
+    </section>
+
+    <section id="minijuegos" class="hidden">
+      <h2>Minijuegos Éticos</h2>
+      <h3>La Historia de Juan</h3>
+      <p id="story"></p>
+      <div id="game-container"></div>
+      <div id="final-results" class="hidden"></div>
+      <button id="next-button" onclick="showDecision()">Siguiente</button>
+      <button id="restart-button" onclick="restartStory()" class="hidden">Tomar decisiones de nuevo</button>
+    </section>
+
+    <section id="nosotros" class="hidden">
+      <h2>Sobre Nosotros</h2>
+      <p>Nosotros somos estudiantes de la Universidad Continental, pertenecientes a la carrera de Ingeniería de Sistemas, y con orgullo presentamos este trabajo como parte de nuestro proyecto de examen final del primer semestre académico.</p>
+      <p>En un mundo cada vez más interconectado y dependiente de la tecnología, consideramos que la ética digital no es solo un conjunto de normas, sino una actitud responsable frente al uso de las herramientas tecnológicas. Como futuros profesionales de la ingeniería de sistemas, comprendemos la importancia de actuar con integridad, respeto y conciencia en los entornos digitales.</p>
+      <p>Este proyecto no solo busca demostrar nuestros conocimientos adquiridos durante el semestre, sino también reflejar nuestro compromiso con los valores éticos fundamentales, tales como la privacidad, la seguridad de la información, el respeto por la propiedad intelectual, la responsabilidad en el uso de las redes y el fomento de un entorno digital sano y colaborativo.</p>
+      <p>Hemos trabajado de manera conjunta, aplicando tanto nuestras habilidades técnicas como nuestro sentido crítico, con el objetivo de crear una propuesta que promueva el uso consciente y ético de la tecnología.</p>
+      <h3>Integrantes del equipo:</h3>
+      <ul>
+        <li>Yamil Alejandro Barra Camacho</li>
+        <li>José Jair Curasco Aranzabal</li>
+        <li>Carlos Benjamín Gavancho Chafloque</li>
+        <li>Edy Albert Lezama Quispe</li>
+        <li>Nitwar Sebastián Checya Aguilar</li>
+      </ul>
+      <p>Cada uno de nosotros ha aportado activamente al desarrollo de este proyecto, convencidos de que la ética digital es un pilar esencial en la formación de todo ingeniero de sistemas.</p>
+    </section>
+
+    <section id="encuesta" class="hidden">
+      <h2>Encuesta de Satisfacción</h2>
+      <form id="survey-form">
+        <label for="satisfaction">¿Qué tan satisfecho estás?</label><br>
+        <select id="satisfaction" name="satisfaction">
+          <option value="1">1 - Muy insatisfecho</option>
+          <option value="2">2 - Insatisfecho</option>
+          <option value="3">3 - Neutral</option>
+          <option value="4">4 - Satisfecho</option>
+          <option value="5">5 - Muy satisfecho</option>
+        </select><br><br>
+        <label for="comments">Comentarios adicionales:</label><br>
+        <textarea id="comments" name="comments"></textarea><br>
+        <button type="button" onclick="submitSurvey()">Enviar Encuesta</button>
+      </form>
+      <div id="survey-feedback" class="notification"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>INFORMACIÓN: Proyecto educativo sobre ética digital.</p>
+  </footer>
+
+  <script>
+    let scores = [0, 0, 0];
+    let decisions = [];
+    let currentStep = 0;
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function showSection(id) {
+      ['inicio', 'tips', 'minijuegos', 'nosotros', 'encuesta'].forEach(sec => {
+        document.getElementById(sec).classList.add('hidden');
+      });
+      document.getElementById(id).classList.remove('hidden');
+      if (id === 'minijuegos') startStory();
+    }
+
+    const tips = [
+      'No publiques fotos sin permiso.',
+      'Piensa antes de compartir en redes.',
+      'Respeta la privacidad de los demás.',
+      'Verifica la información antes de difundirla.',
+      'No descargues software pirata.',
+      'Evita el ciberacoso en cualquier forma.',
+      'Protege tus contraseñas y datos personales.',
+      'Usa la tecnología para construir, no para destruir.',
+      'No uses inteligencia artificial para hacer trampa.',
+      'Da crédito a los autores de los contenidos.',
+      'Configura bien la privacidad de tus dispositivos.',
+      'No uses dispositivos ajenos sin autorización.',
+      'Revisa los permisos de las apps.',
+      'Piensa en las consecuencias de lo que publicas.',
+      'Cambia tus contraseñas regularmente.'
+    ];
+
+    function showTip() {
+      const tip = tips[Math.floor(Math.random() * tips.length)];
+      document.getElementById('tip-content').textContent = tip;
+    }
+
+    function startStory() {
+      currentStep = 0;
+      decisions = [];
+      document.getElementById('final-results').classList.add('hidden');
+      document.getElementById('next-button').classList.remove('hidden');
+      document.getElementById('restart-button').classList.add('hidden');
+      document.getElementById('game-container').classList.remove('hidden');
+      showDecision();
+    }
+
+    function showDecision() {
+      const storyElement = document.getElementById('story');
+      const container = document.getElementById('game-container');
+      let storyText = '';
+      let optionsHTML = '';
+
+      const steps = [
+        ["Juan es un estudiante...", ["Ayudar", "No ayudar"]],
+        ["Pedro copia sin citar...", ["Decir", "Ignorar"]],
+        ["Pedro se molesta...", ["Insistir", "Dejar"]],
+        ["Pedro acepta pero se aleja...", ["Celebrar", "Disculparse"]],
+        ["Pedro se aleja más...", ["Hablar", "Dejar"]],
+        ["Pedro agradece...", ["Seguir", "Distanciar"]],
+        ["Terminan la tarea...", ["CelebrarAmistad", "Ignorar"]]
+      ];
+
+      if (currentStep < steps.length) {
+        const [text, options] = steps[currentStep];
+        storyText = text;
+        optionsHTML = options.map(opt => `<button onclick="makeDecision('${opt}')">${opt}</button>`).join('');
+      } else {
+        showFinalResults();
+        return;
+      }
+
+      storyElement.textContent = storyText;
+      container.innerHTML = optionsHTML;
+    }
+
+    function makeDecision(decision) {
+      decisions.push(decision);
+      currentStep++;
+      showDecision();
+    }
+
+    function showFinalResults() {
+      document.getElementById('next-button').classList.add('hidden');
+      document.getElementById('game-container').classList.add('hidden');
+      document.getElementById('final-results').classList.remove('hidden');
+      document.getElementById('restart-button').classList.remove('hidden');
+
+      let correct = ['ayudar', 'decir', 'insistir', 'hablar', 'seguir', 'celebrarAmistad'];
+      let html = "<h3>Decisiones de Juan:</h3><ul class='decision-list'>";
+      decisions.forEach((d, i) => {
+        const isCorrect = correct.includes(d);
+        html += `<li>Decisión ${i + 1}: ${d} - <span class='${isCorrect ? 'correct' : 'incorrect'}'>${isCorrect ? 'Correcta' : 'Incorrecta'}</span></li>`;
+      });
+      html += "</ul><h3>Reflexión:</h3><p class='reflection'>Las decisiones reflejan la importancia de actuar con ética y responsabilidad...</p>";
+      document.getElementById('final-results').innerHTML = html;
+    }
+
+    function restartStory() {
+      startStory();
+    }
+
+    function submitSurvey() {
+      const val = document.getElementById('satisfaction').value;
+      const com = document.getElementById('comments').value;
+      const fb = document.getElementById('survey-feedback');
+      fb.textContent = `Gracias por tu calificación de ${val} estrellas. Tus comentarios: ${com}`;
+      fb.classList.remove('hidden');
+      document.getElementById('survey-form').reset();
+    }
+  </script>
+</body>
+</html>
